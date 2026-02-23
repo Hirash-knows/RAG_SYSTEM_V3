@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+
+  nats:
+    image: nats:latest
+    container_name: nats-server
+    ports:
+      - "4222:4222"
+
+  backend:
+    image: hirashjyoti/visual_rag-backend:latest
+    container_name: backend-service
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./images:/shared/images
+    environment:
+      - NATS_URL=nats://nats:4222
+    depends_on:
+      - nats
+
+  rag:
+    image: hirashjyoti/visual_rag-rag:latest
+    container_name: rag_service
+    environment:
+      - NATS_URL=nats://nats:4222
+    depends_on:
+      - nats
