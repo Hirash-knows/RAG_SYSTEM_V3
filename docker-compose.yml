@@ -14,7 +14,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./images:/shared/images
+      - ./images/images:/shared/images
     environment:
       - NATS_URL=nats://nats:4222
     depends_on:

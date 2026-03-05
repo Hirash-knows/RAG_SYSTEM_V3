@@ -1,0 +1,8 @@
+numpy
+torch
+faiss-cpu
+Pillow
+open-clip-torch
+ipython
+nats-py
+python-dotenv
