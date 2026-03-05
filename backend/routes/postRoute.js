@@ -20,6 +20,7 @@ router.post('/images', async (req, res) => {
       const safefilename = encodeURIComponent(item.filename);
       return{
         url : `http://${finalIP}:${finalPort}/photos/${safefilename}`,
+        caption : item.caption,
       };
     });
 
